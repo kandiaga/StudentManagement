@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Students index{% endblock %}
+
+{% block body %}
+    <h1>Students index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdStudent</th>
+                <th>StudentName</th>
+                <th>StudentImage</th>
+                <th>StudentFistname</th>
+                <th>StudentLastname</th>
+                <th>StudentAge</th>
+                <th>StudentBirth</th>
+                <th>IdSchool</th>
+                <th>RegistrationDate</th>
+                <th>HomeCity</th>
+                <th>HomeAddress</th>
+                <th>FatherName</th>
+                <th>MontherName</th>
+                <th>ParentPhone</th>
+                <th>FatherPhone</th>
+                <th>MontherPhone</th>
+                <th>Created</th>
+                <th>IdClasse</th>
+                <th>IsActive</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.idStudent }}</td>
+                <td>{{ student.studentName }}</td>
+                <td>{{ student.studentImage }}</td>
+                <td>{{ student.studentFistname }}</td>
+                <td>{{ student.studentLastname }}</td>
+                <td>{{ student.studentAge }}</td>
+                <td>{{ student.studentBirth ? student.studentBirth|date('Y-m-d') : '' }}</td>
+                <td>{{ student.idSchool }}</td>
+                <td>{{ student.registrationDate ? student.registrationDate|date('Y-m-d') : '' }}</td>
+                <td>{{ student.homeCity }}</td>
+                <td>{{ student.homeAddress }}</td>
+                <td>{{ student.fatherName }}</td>
+                <td>{{ student.montherName }}</td>
+                <td>{{ student.parentPhone }}</td>
+                <td>{{ student.fatherPhone }}</td>
+                <td>{{ student.montherPhone }}</td>
+                <td>{{ student.created ? student.created|date('Y-m-d') : '' }}</td>
+                <td>{{ student.idClasse }}</td>
+                <td>{{ student.isActive }}</td>
+                <td>
+                    <a href="{{ path('app_students_show', {'idStudent': student.idStudent}) }}">show</a>
+                    <a href="{{ path('app_students_edit', {'idStudent': student.idStudent}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="20">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_students_new') }}">Create new</a>
+{% endblock %}

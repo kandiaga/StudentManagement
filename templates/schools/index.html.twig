@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Schools index{% endblock %}
+
+{% block body %}
+    <h1>Schools index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdSchool</th>
+                <th>SchoolName</th>
+                <th>SchoolCountry</th>
+                <th>SchoolCity</th>
+                <th>SchoolLevel</th>
+                <th>SchoolAddress</th>
+                <th>SchoolPhone</th>
+                <th>SchoolPhax</th>
+                <th>SchoolPostalcode</th>
+                <th>SchoolDescription</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for school in schools %}
+            <tr>
+                <td>{{ school.idSchool }}</td>
+                <td>{{ school.schoolName }}</td>
+                <td>{{ school.schoolCountry }}</td>
+                <td>{{ school.schoolCity }}</td>
+                <td>{{ school.schoolLevel }}</td>
+                <td>{{ school.schoolAddress }}</td>
+                <td>{{ school.schoolPhone }}</td>
+                <td>{{ school.schoolPhax }}</td>
+                <td>{{ school.schoolPostalcode }}</td>
+                <td>{{ school.schoolDescription }}</td>
+                <td>
+                    <a href="{{ path('app_schools_show', {'idSchool': school.idSchool}) }}">show</a>
+                    <a href="{{ path('app_schools_edit', {'idSchool': school.idSchool}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_schools_new') }}">Create new</a>
+{% endblock %}

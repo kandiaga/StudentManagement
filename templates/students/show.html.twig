@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Students{% endblock %}
+
+{% block body %}
+    <h1>Students</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdStudent</th>
+                <td>{{ student.idStudent }}</td>
+            </tr>
+            <tr>
+                <th>StudentName</th>
+                <td>{{ student.studentName }}</td>
+            </tr>
+            <tr>
+                <th>StudentImage</th>
+                <td>{{ student.studentImage }}</td>
+            </tr>
+            <tr>
+                <th>StudentFistname</th>
+                <td>{{ student.studentFistname }}</td>
+            </tr>
+            <tr>
+                <th>StudentLastname</th>
+                <td>{{ student.studentLastname }}</td>
+            </tr>
+            <tr>
+                <th>StudentAge</th>
+                <td>{{ student.studentAge }}</td>
+            </tr>
+            <tr>
+                <th>StudentBirth</th>
+                <td>{{ student.studentBirth ? student.studentBirth|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IdSchool</th>
+                <td>{{ student.idSchool }}</td>
+            </tr>
+            <tr>
+                <th>RegistrationDate</th>
+                <td>{{ student.registrationDate ? student.registrationDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>HomeCity</th>
+                <td>{{ student.homeCity }}</td>
+            </tr>
+            <tr>
+                <th>HomeAddress</th>
+                <td>{{ student.homeAddress }}</td>
+            </tr>
+            <tr>
+                <th>FatherName</th>
+                <td>{{ student.fatherName }}</td>
+            </tr>
+            <tr>
+                <th>MontherName</th>
+                <td>{{ student.montherName }}</td>
+            </tr>
+            <tr>
+                <th>ParentPhone</th>
+                <td>{{ student.parentPhone }}</td>
+            </tr>
+            <tr>
+                <th>FatherPhone</th>
+                <td>{{ student.fatherPhone }}</td>
+            </tr>
+            <tr>
+                <th>MontherPhone</th>
+                <td>{{ student.montherPhone }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ student.created ? student.created|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IdClasse</th>
+                <td>{{ student.idClasse }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ student.isActive }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_students_index') }}">back to list</a>
+
+    <a href="{{ path('app_students_edit', {'idStudent': student.idStudent}) }}">edit</a>
+
+    {{ include('students/_delete_form.html.twig') }}
+{% endblock %}
